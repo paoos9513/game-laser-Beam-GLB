@@ -18,19 +18,21 @@ public class Menu {
                            "3).Exit game\n"
         );
         option = Integer.parseInt(scan.nextLine());
-        while (option!=3){
+        if(option<4){
             switch (option){
                 case 1:
                     new EnterDate();
+                    showMenu();
                     break;
                 case 2:
                     break;
                 case 3:
                     scan.close();
                     break;
-                default:
-                    System.out.println("The option incorrect");
             }
+        }else {
+            System.out.println(" Option incorrect");
+            showMenu();
         }
     }
 }
