@@ -21,10 +21,11 @@ public class Menu {
         if(option<4){
             switch (option){
                 case 1:
-                    new EnterDate();
+                    new StartGame();
                     showMenu();
                     break;
                 case 2:
+                    new OptionsGame();
                     break;
                 case 3:
                     scan.close();

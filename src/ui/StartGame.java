@@ -1,14 +1,13 @@
 package ui;
 
 import model.LinkedListMatrix;
-
-import java.util.Random;
 import java.util.Scanner;
 
-public class EnterDate {
+public class StartGame {
     Scanner scan = new Scanner(System.in);
+    LinkedListMatrix lm;
     private String[] dates;
-    public EnterDate() {
+    public StartGame() {
 
         System.out.println("Ingrese el nickName, la fila, la columna y la cantidad de espejos seguidos de espacios");
         dates = scan.nextLine().split(" ");
@@ -17,7 +16,8 @@ public class EnterDate {
         int column= Integer.parseInt(dates[2]);
         int mirror = Integer.parseInt(dates[3]);
 
-        LinkedListMatrix lm = new LinkedListMatrix(row,column);
+        lm = new LinkedListMatrix(row,column);
+
         System.out.println(lm);
         if(mirror>0){
 
