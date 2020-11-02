@@ -6,6 +6,7 @@ public class LinkedListMatrix {
     private int numRows;
     private int numColumn;
 
+
     public LinkedListMatrix(int numRows, int numColumn) {
         this.numRows = numRows;
         this.numColumn = numColumn;

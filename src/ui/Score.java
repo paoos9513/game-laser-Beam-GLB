@@ -6,5 +6,7 @@ public class Score {
     public Score() {
 
     }
+    public void countPoints(int numberRow, char column, char position){
 
+    }
 }
