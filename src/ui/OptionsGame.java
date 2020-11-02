@@ -14,16 +14,21 @@ public class OptionsGame {
         System.out.println("3.Start menu");
 
         int option = Integer.parseInt(scan.nextLine());
-        switch (option) {
-            case 1:
-                new ShootLaserBeam();
-                break;
-            case 2:
-                new GuessMirrorPosition();
-                break;
-            case 3:
-                new Menu();
-                break;
+        if (option<4) {
+            switch (option) {
+                case 1:
+                    new ShootLaserBeam();
+                    break;
+                case 2:
+                    new GuessMirrorPosition();
+                    break;
+                case 3:
+                    new Menu();
+                    break;
+            }
+        }else {
+            System.out.println("The option incorrect");
+            new OptionsGame();
         }
     }
 }

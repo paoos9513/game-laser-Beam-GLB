@@ -1,5 +1,11 @@
 package ui;
-
+/**
+ * Una clase para representar círculos situados sobre el plano.
+ * Cada círculo queda determinado por su radio junto con las
+ * coordenadas de su  centro.
+ * @version 2.0, 04/11/2020
+ * @author Rafa Caballero
+ */
 public class Main {
     public Main(){
         new Menu();
