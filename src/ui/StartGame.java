@@ -17,14 +17,8 @@ public class StartGame {
         int mirror = Integer.parseInt(dates[3]);
 
         lm = new LinkedListMatrix(row,column);
-
         System.out.println(lm);
-        if(mirror>0){
-
-        }
-        //Random m = new Random();
-        //lm = (char)(m.nextInt(91) + 65);
-        System.out.println(nickName + row + column + mirror);
+        new OptionsGame();
     }
 
 

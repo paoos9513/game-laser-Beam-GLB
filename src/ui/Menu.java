@@ -14,7 +14,7 @@ public class Menu {
         System.out.println("      GAME LASER BEAM GLB");
         System.out.println("-------------------------------");
         System.out.println("1).Play \n"+
-                           "2).See position board\n"+
+                           "2).See Score\n"+
                            "3).Exit game\n"
         );
         option = Integer.parseInt(scan.nextLine());
@@ -22,10 +22,9 @@ public class Menu {
             switch (option){
                 case 1:
                     new StartGame();
-                    showMenu();
                     break;
                 case 2:
-                    new OptionsGame();
+                    new Score();
                     break;
                 case 3:
                     scan.close();
