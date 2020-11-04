@@ -9,13 +9,12 @@ public class ShootLaserBeam {
         System.out.println("(1..n).Enter the row number\n" + "(A-Z).The column letter\n");
         String select = scan.nextLine();
         //agregar condicion de que se debe lanzar solo desde las filas y columnas principales
-        if (select.length() < 4) {
-            int rowSelect = Integer.parseInt(select.substring(0, 1));
-            char columnSelect = select.charAt(1);
-            System.out.println(rowSelect + " " + columnSelect);
-        } else if (select.length() < 5) {
-            int rowSelect = Integer.parseInt(select.substring(0, 2));
-            char columnSelect = select.charAt(2);
+
+        if (select.length() > 0) {
+            int rowSelect = Integer.parseInt(select.substring(0,select.length()-1));
+            System.out.println(rowSelect + " " + select);
+            char columnSelect = select.charAt(select.length()-1);
+            System.out.println(columnSelect + " " + select);
             System.out.println(rowSelect + " " + columnSelect);
         } else {
             System.out.println("the values entered exceed the allowed limit");

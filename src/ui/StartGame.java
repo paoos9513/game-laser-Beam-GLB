@@ -10,16 +10,17 @@ public class StartGame {
 
     public StartGame() {
         System.out.println("Enter the nickname, row, column and the number of mirrors followed by spaces");
-        System.out.println("ROW MAX ---> 26 " + " _______ " + "COLUMN MAX ---> 26 " + " _______ " + "MIRROR MAX ---> (ROW*COLUMN)");
+        System.out.println("ROW MIN ---> 1 " + " _______ " + "COLUMN MAX ---> 26 " + " _______ " + "MIRROR MAX ---> (ROW*COLUMN)");
         data = scan.nextLine().split(" ");
         if (data.length == 4) {
             String nickname = data[0];
             int row = Integer.parseInt(data[1]);
             int column = Integer.parseInt(data[2]);
             int mirror = Integer.parseInt(data[3]);
-            if (row <= 26 && column <= 27 && mirror <= (row * column)) {
+            if ((row > 0) && (column > 0 && column <= 26) && (mirror > 0 && mirror <= (row * column))) {
                 lm = new LinkedListMatrix(row, column,mirror);
                 System.out.println(lm.toString());
+
             } else {
                 System.out.println("Exceeds allowed values");
                 new StartGame();
