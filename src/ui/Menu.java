@@ -1,7 +1,6 @@
 package ui;
 
 import model.Score;
-
 import java.util.Scanner;
 
 public class Menu {
@@ -12,17 +11,17 @@ public class Menu {
         showMenu();
     }
 
-    public void showMenu(){
+    public void showMenu() {
         System.out.println("*******************************");
         System.out.println("      GAME LASER BEAM GLB");
         System.out.println("*******************************");
-        System.out.println("1).Play \n"+
-                           "2).See Score\n"+
-                           "3).Exit game\n"
+        System.out.println("1).Play \n" +
+                "2).See Score\n" +
+                "3).Exit game\n"
         );
         option = Integer.parseInt(scan.nextLine());
-        if(option<4){
-            switch (option){
+        if (option < 4) {
+            switch (option) {
                 case 1:
                     new StartGame();
                     break;
@@ -33,7 +32,7 @@ public class Menu {
                     scan.close();
                     break;
             }
-        }else {
+        } else {
             System.out.println(" Option incorrect");
             showMenu();
         }

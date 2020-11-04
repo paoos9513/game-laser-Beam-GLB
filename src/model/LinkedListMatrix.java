@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class LinkedListMatrix {
 
-    private final String LEFT_MIRROR = "\\";
-    private final String RIGHT_MIRROR = "/";
-    private final String START = "S";
-    private final String END = "E";
-    private final String ERROR = "X";
-    private final String HORIZONTAL = "H";
-    private final String VERTICAL = "V";
+    private final static String LEFT_MIRROR = "\\";
+    private final static String RIGHT_MIRROR = "/";
+    private final static String START = "S";
+    private final static String END = "E";
+    private final static String ERROR = "X";
+    private final static String HORIZONTAL = "H";
+    private final static String VERTICAL = "V";
     private Node first;
     private Node nodeSelected;
     private Node backupNodeSelected;
@@ -19,8 +19,6 @@ public class LinkedListMatrix {
     private int numColumn;
     Random random = new Random();
     String idColumns = "  ";
-
-
     private int correctAnswers = 0;
     private int mirrors;
 
@@ -32,6 +30,7 @@ public class LinkedListMatrix {
         createMatrix();
         addMirrors(first, first.getDown(), mirrors);
     }
+
     //CREACION DE LA MATRIZ
     private void createMatrix() {
         //System.out.println("vamos a crear la matriz");
@@ -39,6 +38,7 @@ public class LinkedListMatrix {
         //System.out.println("se crea el first");
         createRow(0, 0, first);
     }
+
     //CREACION DE LAS FILAS
     private void createRow(int i, int j, Node currentFirstRow) {
         //System.out.println("en createRow con la fila " + i);
@@ -50,6 +50,7 @@ public class LinkedListMatrix {
             createRow(i + 1, j, downFirstRow);
         }
     }
+
     //CREACION DE LAS COLUMNAS
     private void createCol(int i, int j, Node prev, Node rowPrev) {
         if (j < numColumn) {
@@ -66,6 +67,7 @@ public class LinkedListMatrix {
             createCol(i, j + 1, current, rowPrev);
         }
     }
+
     // MOSTRAR MATRIZ
     public String toString() {
         String msg;
@@ -74,6 +76,7 @@ public class LinkedListMatrix {
         columnsIds(first.getColumn());
         return idColumns + msg;
     }
+
     // METODO PARA AGREGAR ESPEJOS EN LOS ESPACIOS VACIOS
     public void addMirrors(Node current, Node nextRowFirstColumn, int mirrors) {
         if (mirrors > 0) {
@@ -91,6 +94,7 @@ public class LinkedListMatrix {
             }
         }
     }
+
     //METODO PARA BUSCAR EL NODO POR IDENTIFICACION
     public void scanNodesById(Node current, Node nextRowFirstColumn, String nodeContent) {
         if (current != null) {
@@ -109,18 +113,22 @@ public class LinkedListMatrix {
             nodeSelected = null;
         }
     }
+
     //METODO PARA AGREGAR LOS ESPEJOS DE FORMA ALEATORIA
     public boolean hasMirror() {
         return random.nextInt(((numColumn * numRows) / 2)) == 0;
     }
+
     //METODO PARA UBICAR LA POSICION DEL ESPEJO DE FORMA ALEATORIA
     public String mirrorType() {
         return random.nextInt(2) == 0 ? RIGHT_MIRROR : LEFT_MIRROR;
     }
+
     // METODO PARA NOMBRAR LAS FILAS DE 1 HASTA N
     private String idRow(int row) {
         return (row + 1) + " ";
     }
+
     //MOSTRAR MATRIZ CON EL NOMBRE DE LAS FILAS Y LAS COLUMNAS
     private String toStringRow(Node firstRow) {
         String msg = "";
@@ -130,6 +138,7 @@ public class LinkedListMatrix {
         }
         return msg;
     }
+
     // METODO PARA NOMBRAR LAS COLUMNAS DE LA A HASTA LA Z (SIN CONTAR LA Ñ)
     private void columnsIds(int columnPosition) {
         if (columnPosition < numColumn) {
@@ -139,6 +148,7 @@ public class LinkedListMatrix {
             idColumns += "\n";
         }
     }
+
     //MOSTRAR MATRIZ CON EL NOMBRE DE LA COLUMNA
     private String toStringCol(Node current) {
         String msg = "";
@@ -160,12 +170,13 @@ public class LinkedListMatrix {
         }
         shootLaser(idRow + idColumn, direction, first);
     }
+
     // SELLECCION DEL NODO ADIVINAR UN ESPEJO
     public void selectNode(String action) {
         String idRow = action.substring(0, 1);
         String idColumn = action.substring(1, 2);
         scanNodesById(first, first.getDown(), idRow + idColumn);
-        if (backupNodeSelected !=null) {
+        if (backupNodeSelected != null) {
             if (backupNodeSelected.getMark().equals(ERROR)) {
                 backupNodeSelected.setMark(" ");
             }
@@ -174,38 +185,40 @@ public class LinkedListMatrix {
         if (nodeSelected.getMirror().equals("")) {
             nodeSelected.setMark(ERROR);
         } else {
-            correctAnswers ++;
+            correctAnswers++;
             nodeSelected.setMark(nodeSelected.getMirror());
-            if (correctAnswers ==  this.mirrors) {
+            if (correctAnswers == this.mirrors) {
                 win();
             }
         }
     }
+
     //GANO EL JUEGO
     public void win() {
         System.out.println("Gano");
     }
+
     //DISPARAR LASER
     private void shootLaser(String nodeId, String direction, Node current) {
         scanNodesById(current, current.getDown(), nodeId);
         nodeSelected.setMark(START);
-        if ( !direction.equals("") &&
-                (nodeSelected.getRow() == 0 && nodeSelected.getColumn() ==0)
+        if (!direction.equals("") &&
+                (nodeSelected.getRow() == 0 && nodeSelected.getColumn() == 0)
                 || (nodeSelected.getRow() == numRows && nodeSelected.getColumn() == numColumn)
                 || (nodeSelected.getRow() == 0 && nodeSelected.getColumn() == numColumn)
                 || (nodeSelected.getRow() == numRows && nodeSelected.getColumn() == 0)
-        )  {
+        ) {
             System.out.println(direction);
             switch (direction) {
                 case VERTICAL:
-                    if (nodeSelected.getUp() == null){
+                    if (nodeSelected.getUp() == null) {
                         shootToDown(nodeSelected, nodeSelected);
                     } else {
                         shootToUp(nodeSelected, nodeSelected);
                     }
                     break;
                 case HORIZONTAL:
-                    if (nodeSelected.getPrev() == null){
+                    if (nodeSelected.getPrev() == null) {
                         shootToRight(nodeSelected, nodeSelected);
                     } else {
                         shootToLeft(nodeSelected, nodeSelected);
@@ -219,13 +232,14 @@ public class LinkedListMatrix {
                 shootToRight(nodeSelected, nodeSelected);
             } else if (current.getColumn() == numColumn) {
                 shootToLeft(nodeSelected, nodeSelected);
-            }else if (current.getRow() == 0) {
+            } else if (current.getRow() == 0) {
                 shootToDown(nodeSelected, nodeSelected);
             } else if (current.getRow() == numRows) {
                 shootToUp(nodeSelected, nodeSelected);
             }
         }
     }
+
     //DISPARAR A LA DERECHA
     public void shootToRight(Node current, Node before) {
         if (current == null) {
@@ -245,6 +259,7 @@ public class LinkedListMatrix {
             }
         }
     }
+
     //DISPARAR A LA IZQUIERDA
     public void shootToLeft(Node current, Node before) {
         if (current == null) {
@@ -264,6 +279,7 @@ public class LinkedListMatrix {
             }
         }
     }
+
     //DISPARAR HACIA ABAJO
     public void shootToDown(Node current, Node before) {
         if (current == null) {
@@ -283,6 +299,7 @@ public class LinkedListMatrix {
             }
         }
     }
+
     //DISPARAR HACIA ARRIBA
     public void shootToUp(Node current, Node before) {
         if (current == null) {
