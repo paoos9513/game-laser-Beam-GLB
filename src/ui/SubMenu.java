@@ -2,10 +2,10 @@ package ui;
 
 import java.util.Scanner;
 
-public class OptionsGame {
+public class SubMenu {
     Scanner scan = new Scanner(System.in);
 
-    public OptionsGame() {
+    public SubMenu() {
         System.out.println("--------------------");
         System.out.println(" Options to execute");
         System.out.println("--------------------");
@@ -28,7 +28,7 @@ public class OptionsGame {
             }
         }else {
             System.out.println("The option incorrect");
-            new OptionsGame();
+            new SubMenu();
         }
     }
 }

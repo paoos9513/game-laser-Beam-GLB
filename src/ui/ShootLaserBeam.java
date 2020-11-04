@@ -12,7 +12,6 @@ public class ShootLaserBeam {
         if (select.length() < 4) {
             int rowSelect = Integer.parseInt(select.substring(0, 1));
             char columnSelect = select.charAt(1);
-
             System.out.println(rowSelect + " " + columnSelect);
         } else if (select.length() < 5) {
             int rowSelect = Integer.parseInt(select.substring(0, 2));
@@ -20,8 +19,11 @@ public class ShootLaserBeam {
             System.out.println(rowSelect + " " + columnSelect);
         } else {
             System.out.println("the values entered exceed the allowed limit");
+            new ShootLaserBeam();
         }
-        new ShootLaserBeam();
+        new SubMenu();
+
+        //conectar con las otras clases
     }
 }
 
