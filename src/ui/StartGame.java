@@ -8,7 +8,7 @@ public class StartGame {
     Scanner scan = new Scanner(System.in);
     LinkedListMatrix lm;
     String nickname;
-
+    // metodo constructor donde ingresan los datos del tamaño de la matriz n*m y la cantidad de espejos
     public StartGame() {
         System.out.println("Enter the nickname, row, column and the number of mirrors followed by spaces");
         System.out.println("ROW MIN ---> 1 " + " _______ " + "COLUMN MAX ---> 26 " + " _______ " + "MIRROR MAX ---> (ROW*COLUMN)");
@@ -40,12 +40,6 @@ public class StartGame {
         System.out.println("(1..n).Enter the row number\n" + "(A-Z).The column letter\n");
         String action = scan.nextLine();
         if (action.length() > 0) {
-            /**
-             System.out.println(action.length()-2);
-             String rowSelect = action.substring(0,action.length()-1);
-             char columnSelect = action.charAt(action.length()-1);
-             //String position = action.substring(2,action.length()-3);
-             **/
             lm.shootLaserAction(action);
             System.out.println(nickname);
             System.out.println(lm.toString());
@@ -62,19 +56,13 @@ public class StartGame {
     public void guessMirrorPosition() {
         System.out.println("(1..n).Enter the row number\n" + "(A-Z).The column letter\n" +
                 "(R).Right or (L). Left in uppercase");
-        String select = scan.nextLine();
+        String action = scan.nextLine();
         System.out.println(" ");
         //agregar condicion de que se debe lanzar solo desde las filas y columnas principales
-        if (select.length() > 0) {
-            lm.selectNode(select);
+        if (action.length() > 0) {
+            lm.selectNode(action);
             System.out.println(nickname);
             System.out.println(lm.toString());
-            /**
-             int rowSelect = Integer.parseInt(select.substring(0, select.length()-2));
-             char columnSelect = select.charAt(select.length()-2);
-             char position = select.charAt(select.length()-1);
-             System.out.println(rowSelect + " " + columnSelect + " " + position);
-             **/
         } else {
             System.out.println("the values entered exceed the allowed limit");
             guessMirrorPosition();

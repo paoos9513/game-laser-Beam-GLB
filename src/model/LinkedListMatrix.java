@@ -116,7 +116,7 @@ public class LinkedListMatrix {
 
     //METODO PARA AGREGAR LOS ESPEJOS DE FORMA ALEATORIA
     public boolean hasMirror() {
-        return random.nextInt(((numColumn * numRows) / 2)) == 0;
+        return random.nextInt(5) == 0;
     }
 
     //METODO PARA UBICAR LA POSICION DEL ESPEJO DE FORMA ALEATORIA
@@ -161,20 +161,22 @@ public class LinkedListMatrix {
 //ACCION DE TIRAR EL RAYO LASER (SELECCIONAR EL NODO)
 
     public void shootLaserAction(String action) {
-        String idRow = action.substring(0, 1);
-        String idColumn = action.substring(1, 2);
+        String idRow = action.substring(0,action.length()-2);
+        String idColumn = action.substring(action.length()-2);
         String direction = "";
         try {
-            direction = action.substring(2, 3);
+            direction = action.substring(action.length() - 1);
         } catch (Exception ignored) {
         }
+
         shootLaser(idRow + idColumn, direction, first);
     }
 
     // SELLECCION DEL NODO ADIVINAR UN ESPEJO
     public void selectNode(String action) {
-        String idRow = action.substring(0, 1);
-        String idColumn = action.substring(1, 2);
+        String idRow = action.substring(0,action.length()-2);
+        String idColumn = action.substring(action.length()-2);
+        System.out.println(idRow + " " + idColumn);
         scanNodesById(first, first.getDown(), idRow + idColumn);
         if (backupNodeSelected != null) {
             if (backupNodeSelected.getMark().equals(ERROR)) {
