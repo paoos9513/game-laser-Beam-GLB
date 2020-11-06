@@ -2,7 +2,7 @@ package model;
 
 import java.util.Random;
 
-public class LinkedListMatrix {
+public class LinkedMatrix {
 
     private final static String LEFT_MIRROR = "\\";
     private final static String RIGHT_MIRROR = "/";
@@ -23,7 +23,7 @@ public class LinkedListMatrix {
     private int mirrors;
 
     //METODO CONSTRUCTOR
-    public LinkedListMatrix(int numRows, int numColumn, int mirrors) {
+    public LinkedMatrix(int numRows, int numColumn, int mirrors) {
         this.numRows = numRows;
         this.numColumn = numColumn;
         this.mirrors = mirrors;

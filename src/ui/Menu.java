@@ -1,10 +1,13 @@
 package ui;
 
+import model.Score;
+
 import java.util.Scanner;
 
 public class Menu {
     int option;
     Scanner scan = new Scanner(System.in);
+    Score points = new Score();
 //metodo constructor
     public Menu() {
         showMenu();
@@ -25,7 +28,8 @@ public class Menu {
                     new StartGame();
                     break;
                 case 2:
-                    //new Score();
+                    System.out.println(points.toString());
+                    showMenu();
                     break;
                 case 3:
                     scan.close();

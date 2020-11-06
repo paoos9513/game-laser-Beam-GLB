@@ -1,12 +1,15 @@
 package ui;
 
-import model.LinkedListMatrix;
+import model.LinkedMatrix;
+import model.Score;
 
 import java.util.Scanner;
 
 public class StartGame {
     Scanner scan = new Scanner(System.in);
-    LinkedListMatrix lm;
+    LinkedMatrix lm;
+    Score points = new Score();
+
     String nickname;
     // metodo constructor donde ingresan los datos del tamaño de la matriz n*m y la cantidad de espejos
     public StartGame() {
@@ -20,7 +23,7 @@ public class StartGame {
             int column = Integer.parseInt(data[2]);
             int mirror = Integer.parseInt(data[3]);
             if ((row > 0) && (column > 0 && column <= 26) && (mirror > 0 && mirror <= (row * column))) {
-                lm = new LinkedListMatrix(row, column, mirror);
+                lm = new LinkedMatrix(row, column, mirror);
                 System.out.println("NickName ----> " + nickname + " || " + "Points ----> "+lm.getCorrectAnswers());
                 System.out.println(lm.toString());
 
@@ -89,6 +92,7 @@ public class StartGame {
                     guessMirrorPosition();
                     break;
                 case 3:
+                    points.addPlayer(nickname,lm.getCorrectAnswers());
                     new Menu();
                     break;
             }
