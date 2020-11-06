@@ -12,13 +12,12 @@ public class Score {
         return root;
     }
 
-    public void addPlayer(String name,int points){
-        Player newPlayer = new Player(name, points);
+    public void addPlayer(String nickname,int points){
+        Player newPlayer = new Player(nickname, points);
         if (root==null){
             root = newPlayer;
         }else{
             addPlayer(root,newPlayer);
-
         }
     }
     private void addPlayer(Player currentPlayer,Player newPlayer){
