@@ -1,16 +1,15 @@
 package ui;
 
-import model.Score;
 import java.util.Scanner;
 
 public class Menu {
     int option;
     Scanner scan = new Scanner(System.in);
-
+//metodo constructor
     public Menu() {
         showMenu();
     }
-
+//muestra el menu principal
     public void showMenu() {
         System.out.println("*******************************");
         System.out.println("      GAME LASER BEAM GLB");
@@ -26,7 +25,7 @@ public class Menu {
                     new StartGame();
                     break;
                 case 2:
-                    new Score();
+                    //new Score();
                     break;
                 case 3:
                     scan.close();

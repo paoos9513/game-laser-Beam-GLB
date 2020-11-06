@@ -321,4 +321,7 @@ public class LinkedListMatrix {
             }
         }
     }
+    public int getCorrectAnswers() {
+        return correctAnswers;
+    }
 }

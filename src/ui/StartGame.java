@@ -21,7 +21,7 @@ public class StartGame {
             int mirror = Integer.parseInt(data[3]);
             if ((row > 0) && (column > 0 && column <= 26) && (mirror > 0 && mirror <= (row * column))) {
                 lm = new LinkedListMatrix(row, column, mirror);
-                System.out.println(nickname);
+                System.out.println("NickName ----> " + nickname + " || " + "Points ----> "+lm.getCorrectAnswers());
                 System.out.println(lm.toString());
 
             } else {
@@ -41,7 +41,7 @@ public class StartGame {
         String action = scan.nextLine();
         if (action.length() > 0) {
             lm.shootLaserAction(action);
-            System.out.println(nickname);
+            System.out.println("NickName ----> " + nickname + " || " + "Points ----> "+lm.getCorrectAnswers());
             System.out.println(lm.toString());
         } else {
             System.out.println("the values entered exceed the allowed limit");
@@ -61,7 +61,7 @@ public class StartGame {
         //agregar condicion de que se debe lanzar solo desde las filas y columnas principales
         if (action.length() > 0) {
             lm.selectNode(action);
-            System.out.println(nickname);
+            System.out.println("NickName ----> " + nickname + " || " + "Points ----> "+lm.getCorrectAnswers());
             System.out.println(lm.toString());
         } else {
             System.out.println("the values entered exceed the allowed limit");
